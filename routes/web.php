@@ -34,7 +34,6 @@ use App\Http\Controllers\ProductController;
 //en esta funcion agrego todas las rutas que van a estar protegidas del acceso
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
-    
     Route::get('/', function () {
         return view('welcome');
     })->name('welcome');
