@@ -18,7 +18,14 @@ use App\Http\Controllers\ProductController;
 //     return view('welcome');
 // });
 
-Route::resource('products', ProductController::class);
+//se puede acceder solo a las funciones del controller que se le pasa en el array except
+// $routes = ['except' => ['index','show']];
+// Route::resource('products', ProductController::class, $routes);
+
+//en esta funcion agrego todas las rutas que van a estar protegidas del acceso
+Route::middleware(['auth'])->group(function () {
+    Route::resource('products', ProductController::class);
+});
 
 Route::middleware(['auth'])->get('/', function () {
     return view('welcome');
