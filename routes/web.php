@@ -17,22 +17,31 @@ use App\Http\Controllers\ProductController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
 //se puede acceder solo a las funciones del controller que se le pasa en el array except
 // $routes = ['except' => ['index','show']];
 // Route::resource('products', ProductController::class, $routes);
+// Route::middleware(['auth'])->get('/', function () {
+//     return view('welcome');
+// })->name('welcome');
+
+//dashboard
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+
 
 //en esta funcion agrego todas las rutas que van a estar protegidas del acceso
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
+    
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('welcome');
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
 });
-
-Route::middleware(['auth'])->get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
