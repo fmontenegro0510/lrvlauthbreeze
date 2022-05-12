@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -30,17 +32,21 @@ use App\Http\Controllers\ProductController;
 // })->middleware(['auth'])->name('dashboard');
 
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');    
 
 //en esta funcion agrego todas las rutas que van a estar protegidas del acceso
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
     
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('welcome');
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('welcome');
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $user = User::find(1);
+        return view('dashboard', compact('user'));
     })->name('dashboard');
 });
 

@@ -7,3 +7,7 @@
 [Laravel Documentation](https://laravel.com/docs/9.x/authentication)
 [Sample StackOverFlow](https://stackoverflow.com/questions/69418672/laravel-8-auth-middleware-protected-route-failing)
 [Esp](https://programacionymas.com/blog/restringir-acceso-solo-administradores-laravel-usando-middlewares)
+
+
+**Esquema de practica de la Base de Datos**
+[dbdiagram](https://dbdiagram.io/d/627cfd737f945876b60788bc)
